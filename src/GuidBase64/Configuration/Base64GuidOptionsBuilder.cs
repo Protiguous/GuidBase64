@@ -1,23 +1,25 @@
-﻿namespace GuidBase64.Configuration
-{
-    public class Base64GuidOptionsBuilder
-    {
+﻿namespace GuidBase64.Configuration {
+
+    using JetBrains.Annotations;
+
+    public class Base64GuidOptionsBuilder {
+
         private Base64GuidOptions _options;
 
-        public Base64GuidOptionsBuilder() => _options = new Base64GuidOptions();
+        internal Base64GuidOptions Build() => this._options;
 
-        public Base64GuidOptionsBuilder UseStandardBase64Encoding()
-        {
-            _options.StandardBase64Encoding = true;
+        [NotNull]
+        public Base64GuidOptionsBuilder UsePadding() {
+            this._options.Padding = true;
+
             return this;
         }
 
-        public Base64GuidOptionsBuilder UsePadding()
-        {
-            _options.Padding = true;
+        [NotNull]
+        public Base64GuidOptionsBuilder UseStandardBase64Encoding() {
+            this._options.StandardBase64Encoding = true;
+
             return this;
         }
-
-        internal Base64GuidOptions Build() => _options;
     }
 }
